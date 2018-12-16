@@ -34,6 +34,8 @@
        
        $data['title'] = 'Create Post';
 
+       $data['categories'] = $this->post_model->get_categories();
+
        $this->form_validation->set_rules('title', 'Title', 'required');
        $this->form_validation->set_rules('body', 'Body', 'required');
         
@@ -43,7 +45,25 @@
             $this->load->view('posts/create', $data);
             $this->load->view('templates/footer');
        }else{
-            $this->post_model->create_post();
+           //Upload Image
+           $config['upload_path'] = './assets/images/posts' ;
+           $config['allowed_types'] = 'gif|jpeg|jpg|png' ;
+           $config['max_size'] = '2048' ;
+           $config['max_width'] = '1600' ;
+           $config['max_height'] = '1600' ;
+
+           $this->load->library('upload', $config);
+
+           if (!$this->upload->do_upload()) {
+               $error = array('error' => $this->upload->display_errors());
+               $post_image = 'noimage.png';
+           } else {
+               $data =array('upload_data' => $this->upload->data());
+                $post_image = $_FILES['userfile']['name'];
+            }
+           
+
+            $this->post_model->create_post($post_image);
             redirect('posts');
         }
         
@@ -56,6 +76,8 @@
 
     public function edit($slug){
         $data['post'] = $this->post_model->get_posts($slug);
+
+        $data['categories'] = $this->post_model->get_categories();
 
         if(empty($data['post'])){
             show_404();

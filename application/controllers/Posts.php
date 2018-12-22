@@ -22,7 +22,7 @@
             show_404();
         }
 
-        $data['title'] = $data['post']['title'];
+        $data['title'] = $data['post']['title'];/*accessing  'title' field inside 'posts' table */
         
         $this->load->view('templates/header');
         $this->load->view('posts/view', $data);

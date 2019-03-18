@@ -1,3 +1,18 @@
+<?php
+//custom function
+function pre_r($array){
+    echo '<pre>';
+    print_r($array);
+    echo '</pre>';
+     }
+
+
+   pre_r($posts);
+   pre_r($title);
+
+?>
+
+
 <h2><?= $title ?></h2>
 <?php foreach($posts as $post) : ?>
     <h3><?php echo $post['title']; ?></h3>

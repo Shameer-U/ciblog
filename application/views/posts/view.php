@@ -1,3 +1,16 @@
+<?php
+//custom function
+function pre_r($array){
+    echo '<pre>';
+    print_r($array);
+    echo '</pre>';
+   }
+   pre_r($post);
+   pre_r($comments);
+   pre_r($title);
+
+?>
+
 <h2><?php echo $post['title']; ?></h2>
 <small class="post-date">Posted on:<?php echo $post['created_at']; ?></small><br>
 <img  src="<?php echo site_url(); ?>assets/images/posts/<?php 

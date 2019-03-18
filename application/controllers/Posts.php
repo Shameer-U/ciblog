@@ -17,6 +17,13 @@
         $data['posts'] = $this->post_model->get_posts(FALSE, $config['per_page'], $offset);
        // print_r($data['posts']);
 
+       /*  function pre_r($array){
+            echo '<pre>';
+            print_r($array);
+            echo '</pre>';
+        }
+        pre_r($data);*/
+
         $this->load->view('templates/header');
         $this->load->view('posts/index', $data);
         $this->load->view('templates/footer');
@@ -25,14 +32,25 @@
     public function view($slug = NULL){
         $data['post'] = $this->post_model->get_posts($slug);
         $post_id = $data['post']['id'];
+        
         $data['comments'] = $this->comment_model->get_comments($post_id);
         
         if(empty($data['post'])){
             show_404();
         }
 
-        $data['title'] = $data['post']['title'];/*accessing  'title' field inside 'posts' table */
+        $data['title'] = $data['post']['title'];
+
+
+      /*  function pre_r($array){
+            echo '<pre>';
+            print_r($array);
+            echo '</pre>';
+        }
+        pre_r($data);*/
+       
         
+
         $this->load->view('templates/header');
         $this->load->view('posts/view', $data);
         $this->load->view('templates/footer');

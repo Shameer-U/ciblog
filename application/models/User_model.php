@@ -4,8 +4,8 @@
         public function register($enc_password){
             //User data array
             $data = array(
-                'name' => $this->input->post('name'),
-                'email' => $this->input->post('email'),
+                'name' => $this->input->post('name'), /*I think we can access 'post' variables here because of 'form' helper  */
+                'email' => $this->input->post('email'),/*other way is passing as variable like  '$enc_password' is passed from controller*/
                 'username' => $this->input->post('username'),
                 'password' => $enc_password,
                 'zipcode' => $this->input->post('zipcode')

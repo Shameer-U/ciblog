@@ -8,7 +8,9 @@
         }
         
        /* echo 'direct echoing works inside codeigniter ,but not a good practice (use "echo" for checking 
-                something works or checking errors  )';*/
+                something works or checking errors  )'; die();*/
+
+                /*'echos' the code and 'dies'(not execute the remaining code coming underneath it)*/
 
         $data['title'] = ucfirst($page);
 

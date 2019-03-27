@@ -2,6 +2,8 @@
 
  class Posts extends CI_Controller{
 
+   
+
     public function index($offset = 0){
         //Pagination config
         $config['base_url'] = base_url() . 'posts/index/';

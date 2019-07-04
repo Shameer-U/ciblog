@@ -6,7 +6,7 @@ $(document).ready(function(){
       // alert($(this).text());
       
       if(url ==  this.href){
-        $(this).css('color' , 'RED');
+        $(this).css('color' , 'BLACK');
         
       }
    });
